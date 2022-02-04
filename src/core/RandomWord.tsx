@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import ManyWord from "./ManyWords";
 import Word from "./Word";
 
 export default function RandomWord() {
   const { part } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("letter");
+
   const [data, setData] = useState<any>();
   const [search, setSerach] = useState(true);
 
@@ -14,7 +17,12 @@ export default function RandomWord() {
       const newPart = part.replace(/[^0-9a-z]/gi, "");
       const fetch = async () => {
         try {
-          const words = await axios.get(`/part-of-speech/${newPart}`);
+          let words;
+          if (query)
+            words = await axios.get(
+              `/part-of-speech/${newPart}?letter=${query}`
+            );
+          else words = await axios.get(`/part-of-speech/${newPart}`);
           console.log(words.data);
 
           setData(words.data);
