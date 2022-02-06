@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import ManyWord from "./ManyWords";
+import { BASEURL } from "../utils/config";
 import Word from "./Word";
 
 export default function RandomWord() {
@@ -20,7 +20,7 @@ export default function RandomWord() {
           let words;
           if (query)
             words = await axios.get(
-              `/part-of-speech/${newPart}?letter=${query}`
+              `${BASEURL}/part-of-speech/${newPart}?letter=${query}`
             );
           else words = await axios.get(`/part-of-speech/${newPart}`);
           console.log(words.data);

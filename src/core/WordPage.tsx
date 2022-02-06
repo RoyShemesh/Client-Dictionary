@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { BASEURL } from "../utils/config";
 import { WordInteface } from "../utils/types";
 import ManyWord from "./ManyWords";
 import Word from "./Word";
@@ -14,7 +15,7 @@ export default function WordPage() {
       const newWord = word.replace(/[^0-9a-z]/gi, "");
       const fetch = async () => {
         try {
-          const words = await axios.get(`/${newWord.toUpperCase()}`);
+          const words = await axios.get(`${BASEURL}/${newWord.toUpperCase()}`);
           setData(words.data);
         } catch (error) {
           setSerach(false);

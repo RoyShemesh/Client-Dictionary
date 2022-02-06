@@ -5,6 +5,8 @@
 Welcome to dictionary-client readme, this app can should recive word and bring you it's defintions.
 This app is currently ONLY mobile app.
 
+Link : https://dictionary-client.s3.eu-west-1.amazonaws.com/index.html#/A
+
 ## Features
 
 1. All the words are clickable and will direct you to their defnitions.

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { BASEURL } from "../utils/config";
 import ManyWord from "./ManyWords";
 import Word from "./Word";
 
@@ -15,7 +16,7 @@ export default function ExactWord() {
       const fetch = async () => {
         try {
           const words = await axios.get(
-            `/${newWord.toUpperCase()}/${partOfSpeech}`
+            `${BASEURL}/${newWord.toUpperCase()}/${partOfSpeech}`
           );
           setData(words.data.Items);
         } catch (error) {
